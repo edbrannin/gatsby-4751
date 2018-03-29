@@ -1,13 +1,26 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-const IndexPage = () => (
+const IndexPage = ({
+  data,
+}) => (
   <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+    <pre>{JSON.stringify(data, null, 2)}</pre>
   </div>
 )
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query Gatsby4751 {
+    allProblemNode {
+      edges {
+        node {
+          NoWhitespace
+          Has_Whitespace
+        }
+      }
+    }
+  }
+`;
+
